@@ -47,27 +47,42 @@ def generate_quiz():
 
 def mouse_press(x, y, text, color, quiz_type):
     corordinate = []
-    if quiz_type == 0:
-        for items in shapes:
-            if (items['text']).upper() == text:
-                corordinate = items['rect']
-                x0 = corordinate[0]
-                y0 = corordinate[1]
-                w = corordinate[2]
-                h = corordinate[3]
-                if x >= x0 and x <= x0 + w and y >= y0 and y <= y0 + h:
-                    return True
-                else:
-                    return False
-    else:
-        for items in shapes:
-            if items['color'] == color:
-                corordinate = items['rect']
-                x0 = corordinate[0]
-                y0 = corordinate[1]
-                w = corordinate[2]
-                h = corordinate[3]
-                if x >= x0 and x <= x0 + w and y >= y0 and y <= y0 + h:
-                    return True
-                else:
-                    return False
+    for items in shapes:
+        corordinate = items['rect']
+        x0 = corordinate[0]
+        y0 = corordinate[1]
+        w = corordinate[2]
+        h = corordinate[3]
+        if x >= x0 and x <= x0 + w and y >= y0 and y <= y0 + h:
+            user_color = (items['text']).upper()
+            user_code = items['color']
+            if quiz_type == 0 and user_color == text:
+                return True
+            elif quiz_type == 1 and user_code == color:
+                return True
+            else:
+                return False
+    # if quiz_type == 0:
+    #     for items in shapes:
+    #         if (items['text']).upper() == text:
+    #             corordinate = items['rect']
+    #             x0 = corordinate[0]
+    #             y0 = corordinate[1]
+    #             w = corordinate[2]
+    #             h = corordinate[3]
+    #             if x >= x0 and x <= x0 + w and y >= y0 and y <= y0 + h:
+    #                 return True
+    #             else:
+    #                 return False
+    # else:
+    #     for items in shapes:
+    #         if items['color'] == color:
+    #             corordinate = items['rect']
+    #             x0 = corordinate[0]
+    #             y0 = corordinate[1]
+    #             w = corordinate[2]
+    #             h = corordinate[3]
+    #             if x >= x0 and x <= x0 + w and y >= y0 and y <= y0 + h:
+    #                 return True
+    #             else:
+    #                 return False
